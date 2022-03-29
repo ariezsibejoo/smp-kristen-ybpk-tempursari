@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\galery;
+use App\Models\Galery;
 use Illuminate\Http\Request;
 
 class DashboardGaleriController extends Controller
