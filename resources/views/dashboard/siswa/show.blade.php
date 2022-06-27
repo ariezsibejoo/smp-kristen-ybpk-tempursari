@@ -24,7 +24,7 @@
                     <p>: {{ $siswa->nama }}</p>
                     <p>: {{ $siswa->nis }}</p>
                     <p>: {{ $siswa->kelas }}</p>
-                    <p>: {{ $siswa->tanggal_lahir }}</p>
+                    <p>: {{ \Carbon\Carbon::parse($siswa->tanggal_lahir)->isoFormat('D MMMM Y') }}</p>
                 </div>
             </div>
         </div>

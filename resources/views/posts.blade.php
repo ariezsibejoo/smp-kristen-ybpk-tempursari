@@ -3,7 +3,30 @@
 @section('container')
 {{-- <a href="/categories/{{ $category->slug }}">{{ $category->name }}</a> --}}
 
-<h1 class="text-center mb-3">{{ $title }}</h1>
+<!-- Hero Start -->
+<div class="gale" id="gale">
+  <div class="container-fluid">
+      <div class="row align-items-center">
+          <div class="col-sm-12 col-md-6">
+              <div class="hero-content">
+                  <div class="hero-text">
+                      <p>Berita</p>
+                      <h1>Pengumuman dan Prestasi</h1>
+                      <h2></h2>
+                  </div>
+              </div>
+          </div>
+          <div class="col-sm-12 col-md-6 d-none d-md-block">
+              <div class="hero-image">
+                  <img src="img/siswasmp.png" alt="Hero Image">
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+<!-- Hero End -->
+
+<div class="container">
 <div class="row justify-content-center mb-3">
   <div class="col-md-6">
     <form action="/posts">
@@ -21,7 +44,7 @@
     </form>
   </div>
 </div>
-    <div class="mb-3">
+    <div class="mb-3 wow fadeInUp" data-wow-delay="0.1s"">
       @foreach ($categories as $category)
       <a href="/posts?category={{ $category->slug }}" class="btn btn-dark text-white">{{ $category->name }}</a>
       @endforeach
@@ -30,7 +53,7 @@
     {{-- cek ada postingan apa ga, kalau ga ada tampil apa--}}
     @if ($posts->count())
         
-    <div class="card mb-3">
+    <div class="card mb-3 wow fadeInUp" data-wow-delay="0.1s"">
        {{-- cek ada gambar upload atau tidak --}}
        @if ($posts[0]->image)
        <div style="max-height: 400px; overflow:hidden">
@@ -51,14 +74,15 @@
             </small>
         </p>
           <p class="card-text">{{ $posts[0]->excerpt }}</p>
-          <a href="/posts/{{ $posts[0]->slug }}" class="text-decoration-none btn btn-primary">Read more</a>
+          <a href="/posts/{{ $posts[0]->slug }}" class="text-decoration-none btn btn-primary">Selengkapnya ...</a>
         </div>
       </div>
+    </div>
 
     
 
     <div class="container">
-      <div class="row">
+      <div class="row wow fadeInUp" data-wow-delay="0.1s"">
         @foreach ($posts->skip(1) as $post)
             
         <div class="col-md-4">
@@ -78,7 +102,7 @@
                 </small>
             </p>
               <p class="card-text">{{ $post->excerpt }}</p>
-              <a href="/posts/{{ $post->slug }}" class="btn btn-primary">Read more</a>
+              <a href="/posts/{{ $post->slug }}" class="btn btn-primary">Selengkapnya ...</a>
             </div>
           </div>
         </div>

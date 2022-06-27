@@ -1,82 +1,70 @@
 @extends('layouts.main')
 
 @section('container')
-      <main>
-      
-        <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
-          <div class="carousel-indicators">
-            <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-            <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
-            <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
-          </div>
-          <div class="carousel-inner">
-            <div class="carousel-item active">
-              @if ($galeri[0]->image)
-              <div style="max-height: 600px; overflow:hidden">
-                  <img src="{{ asset('storage/'. $galeri[0]->image) }}" alt="galery" class="img-fluid mt-3">    
-              </div>
-              @else
-              <img src="https://source.unsplash.com/1200x400?school,student" alt="..."  >
-              @endif
-              {{-- <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/></svg> --}}
-      
-              <div class="container">
-                <div class="carousel-caption text-start">
-                  <h1>{{ $galeri[0]->nama }}</h1>
-                  <p>{!! $galeri[0]->deskripsi !!}</p>
-                  <p><a class="btn btn-lg btn-primary" href="#">Sign up today</a></p>
-                </div>
-              </div>
-            </div>
-
-            <div class="carousel-item">
-              @if ($galeri[1]->image)
-              <div style="max-height: 600px; overflow:hidden">
-                  <img src="{{ asset('storage/'. $galeri[1]->image) }}" alt="galery" class="img-fluid mt-3">    
-              </div>
-              @else
-              <img src="https://source.unsplash.com/1200x400?school,student" alt="..."  >
-              @endif
-                {{-- <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/></svg> --}}
-        
-                <div class="container">
-                  <div class="carousel-caption text-start">
-                    <h1>{{ $galeri[1]->nama }}</h1>
-                    <p>{!! $galeri[1]->deskripsi !!}</p>
-                    <p><a class="btn btn-lg btn-primary" href="#">Sign up today</a></p>
-                  </div>
+<!-- Hero Start -->
+<div class="gale" id="gale">
+    <div class="container-fluid">
+        <div class="row align-items-center">
+            <div class="col-sm-12 col-md-6">
+                <div class="hero-content">
+                    <div class="hero-text">
+                        <p>Galeri</p>
+                        <h1>Galeri Foto dan Video</h1>
+                        <h2></h2>
+                    </div>
                 </div>
             </div>
-
-            <div class="carousel-item">
-              @if ($galeri[2]->image)
-              <div style="max-height: 600px; overflow:hidden">
-                  <img src="{{ asset('storage/'. $galeri[2]->image) }}" alt="galery" class="img-fluid mt-3">    
-              </div>
-              @else
-              <img src="https://source.unsplash.com/1200x400?school,student" alt="..."  >
-              @endif
-                {{-- <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/></svg> --}}
-        
-                <div class="container">
-                  <div class="carousel-caption text-start">
-                    <h1>{{ $galeri[2]->nama }}</h1>
-                    <p>{!! $galeri[2]->deskripsi !!}</p>
-                    <p><a class="btn btn-lg btn-primary" href="#">Sign up today</a></p>
-                  </div>
+            <div class="col-sm-12 col-md-6 d-none d-md-block">
+                <div class="hero-image">
+                    <img src="img/siswasmp.png" alt="Hero Image">
                 </div>
             </div>
-          </div>
-          <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-          </button>
-          <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-          </button>
         </div>
+    </div>
+</div>
+<!-- Hero End -->
 
-      </main>
+
+<!-- Portfolio Start -->
+<div class="portfolio" id="portfolio">
+    <div class="container">
+        <div class="section-header text-center wow zoomIn" data-wow-delay="0.1s">
+            <p>Galeri</p>
+            <h2>Galeri Sekolah</h2>
+        </div>
+        
+        <div class="row portfolio-container">
+            @if ($galeri->count())    
+            @foreach ($galeri as $galeries)    
+            <div class="col-lg-4 col-md-6 col-sm-12 portfolio-item filter-1 wow fadeInUp" data-wow-delay="0.0s">
+                <div class="portfolio-wrap">
+                    @if ($galeries->image)    
+                    <div class="portfolio-img">
+                        <img src="{{ asset('storage/'. $galeries->image) }}" alt="Image">
+                    </div>
+                    @else
+                    <div class="portfolio-img">
+                        <img src="/img/img-std.jpeg" alt="..."  >
+                        </div> 
+                    @endif
+                    <div class="portfolio-text">
+                        <h3>{{ $galeries->nama }}</h3>
+                        @if ($galeries->image)
+                        <a class="btn" href="{{ asset('storage/'. $galeries->image) }}" data-lightbox="portfolio">+</a>
+                        @else
+                        <a class="btn" href="/img/img-std.jpeg" data-lightbox="portfolio">+</a>
+                        @endif
+                    </div>
+                </div>
+            </div>
+            @endforeach
+            @else
+            <p class="text-center fs-4">Galeri tidak ditemukan.</p>
+            @endif
+
+        </div>
+    </div>
+</div>
+<!-- Portfolio End -->
 
 @endsection

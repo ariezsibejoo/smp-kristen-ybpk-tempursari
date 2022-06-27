@@ -61,7 +61,7 @@
           </select>      
         </div>
 
-      <button type="submit" class="btn btn-primary">Tambah Siswa</button>
+      <button type="submit" class="btn btn-primary">Ubah Data Siswa</button>
     </form>
 </div>
 

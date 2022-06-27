@@ -23,7 +23,6 @@
             <article class="my-3 fs-5">
                 {!! $galery->deskripsi !!}
             </article>
-            <a href="/galeri" class="text-decoration-none d-block">Kembali ke galeri</a>
         </div>
     </div>
 </div>

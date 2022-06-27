@@ -80,7 +80,9 @@ return [
     |
     */
 
-    'locale' => 'en',
+    // 'locale' => 'en',
+    // UNTUK TANGGAL BAHASA INDONESIA
+    'locale' => 'id',
 
     /*
     |--------------------------------------------------------------------------

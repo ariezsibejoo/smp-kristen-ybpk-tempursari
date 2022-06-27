@@ -50,7 +50,8 @@
         {{-- upload file --}}
         <div class="mb-3">
           <label for="image" class="form-label">Foto</label>
-          <input type="file" class="form-control @error('image') is-invalid @enderror" id="image" name="image">
+          <img class="img-fluid mb-3 col-sm-5" id="uploadPreview">
+          <input type="file" class="form-control @error('image') is-invalid @enderror" id="image" name="image" onchange="previewImage();">
           @error('image')
               <div class="invalid-feedback">
                 {{ $message }}
@@ -61,5 +62,20 @@
       <button type="submit" class="btn btn-primary">Tambah Staff</button>
     </form>
 </div>
+
+<script>
+  // preview image
+  function previewImage(){
+    document.getElementById("uploadPreview").style.display= 'block';
+
+    var oFReader = new FileReader();
+      oFReader.readAsDataURL(document.getElementById("image").files[0]);
+      oFReader.onload = function (oFREvent)
+      {
+        document.getElementById("uploadPreview").src = oFREvent.target.result;
+
+      };
+    };
+</script>
 
 @endsection

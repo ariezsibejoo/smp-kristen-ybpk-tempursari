@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BerandaController;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
@@ -13,6 +14,8 @@ use App\Http\Controllers\DashboardStaffController;
 use App\Http\Controllers\DashboardGaleriController;
 use App\Http\Controllers\DashboardCategoryController;
 use App\Http\Controllers\DashboardEditProfilController;
+use App\Http\Controllers\SiswaController;
+use App\Http\Controllers\StaffController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,19 +28,31 @@ use App\Http\Controllers\DashboardEditProfilController;
 |
 */
 
-Route::get('/', function () {
-    return view('beranda', [
-        'title' => 'Beranda'
-    ]);
-});
+// Route::get('/', function () {
+//     return view('beranda', [
+//         'title' => 'Beranda'
+//     ]);
+// });
+
+Route::get('/', [BerandaController::class, 'index']);
 
 Route::get('/profil', [ProfilController::class, 'index']);
 
 Route::get('/galeri', [GaleryController::class, 'index']);
 
+Route::get('/staff', [StaffController::class, 'index']);
+
+Route::get('/siswa', [SiswaController::class, 'index']);
+
 Route::get('/kontak', function () {
-    return view('kontak', [
-        'title' => 'Kontak'
+    return view('#footer', [
+        'title' => 'beranda'
+    ]);
+});
+
+Route::get('/sambutan', function () {
+    return view('sambutan', [
+        'title' => 'sambutan'
     ]);
 });
 

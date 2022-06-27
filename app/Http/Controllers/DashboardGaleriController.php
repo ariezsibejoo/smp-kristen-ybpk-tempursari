@@ -88,8 +88,14 @@ class DashboardGaleriController extends Controller
     {
         $validatedData = $request->validate([
             'nama' => 'max:100|required',
+            'image' => 'image|file|max:1024',
             'deskripsi' => 'required'
         ]);
+
+        if ($request->file('image')) {
+            $validatedData['image'] = $request->file('image')->store('galery-images');
+        }
+
         Galery::where('id', $galeri->id)
             ->update($validatedData);
 

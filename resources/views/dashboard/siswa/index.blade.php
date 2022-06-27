@@ -39,7 +39,7 @@
             <td>{{ $siswa->nis }}</td>
             <td>{{ $siswa->jenkel }}</td>
             <td>{{ $siswa->kelas }}</td>
-            <td>{{ \Carbon\Carbon::parse($siswa->tanggal_lahir)->format('d-F-Y') }}</td>
+            <td>{{ \Carbon\Carbon::parse($siswa->tanggal_lahir)->isoFormat('D MMMM Y') }}</td>
             <td>
                 <a href="/dashboard/siswa/{{ $siswa->nis }}" class="badge bg-info"> <span data-feather="eye"></span></a>
                 <a href="/dashboard/siswa/{{ $siswa->nis }}/edit" class="badge bg-warning"> <span data-feather="edit"></span></a>

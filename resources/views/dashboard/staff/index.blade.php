@@ -34,7 +34,7 @@
             {{-- {{$players ->perPage()*($players->currentPage()-1)+$count}} --}}
             <td>{{ $staf->nama }}</td>
             <td>{{ $staf->nip }}</td>
-            <td>{{ \Carbon\Carbon::parse($staf->tanggal_lahir)->format('d-F-Y') }}</td>
+            <td>{{ \Carbon\Carbon::parse($staf->tanggal_lahir)->isoFormat('D MMMM Y') }}</td>
             <td>{{ $staf->jabatan  }}</td>
             <td>
                 <a href="/dashboard/staff/{{ $staf->id }}" class="badge bg-info"> <span data-feather="eye"></span></a>

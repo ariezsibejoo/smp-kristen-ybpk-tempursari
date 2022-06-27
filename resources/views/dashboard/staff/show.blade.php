@@ -24,7 +24,7 @@
                 <div class="col-lg-4">
                     <p>: {{ $staff->nama }}</p>
                     <p>: {{ $staff->nip }}</p>
-                    <p>: {{ $staff->tanggal_lahir }}</p>
+                    <p>: {{ \Carbon\Carbon::parse($staff->tanggal_lahir)->isoFormat('D MMMM Y') }}</p>
                     <p>: {{ $staff->jabatan }}</p>
                     <img src="{{ asset('storage/'.$staff->image) }}" alt="{{ $staff->nama }}" class="img-fluid">
                 </div>
